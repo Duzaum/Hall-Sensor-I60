@@ -92,15 +92,15 @@ char speed = 'H';
 
       if (cont != cont2)
         {
-          byte hiByte = highByte(cont2); // a EEPROM só salva valores de 0 a 255, então estamos quebrando o valor do contador em dois bytes.
+          byte hiByte = highByte(cont2); // The EEPROM only saves values between 0 ~ 255. So, we are brokening the value of the counter into two bytes.
           byte loByte = lowByte(cont2);
-          EEPROM.write(511,hiByte);  // salvando os dois bytes na memória
+          EEPROM.write(511,hiByte);  // saving the two values on memory
           EEPROM.write(512,loByte);
         }
 
-        byte highByte = EEPROM.read(511);  // lendo na memória
+        byte highByte = EEPROM.read(511);  // Reading the memory
         byte lowByte = EEPROM.read(512);
-        cont3  = word(highByte, lowByte);  // fazendo conversão dos dois bytes em apenas um para gerar o valor com até 5 casas decimais
+        cont3  = word(highByte, lowByte);  // Making the conversion back
 
       if (cont == 0 && cont2 == 0)   //"reset"
 
